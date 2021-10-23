@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Simple Blog</string>
+    <string name="url">https://t3gclientarea.tk/wp-json/wp/v2/posts?per_page=6</string>
+</resources>
