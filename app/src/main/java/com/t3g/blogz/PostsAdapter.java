@@ -41,13 +41,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             public void onClick(View v) {
                 String text = null;
                 if(position==0){
-                    text = position +"st";
+                    text = position+1 +"st";
                 }else if (position==1){
-                    text = position +"nd";
+                    text = position+1 +"nd";
                 }else if (position==2){
-                    text = position +"rd";
+                    text = position+1 +"rd";
                 }else if (position>=3){
-                    text = position +"th";
+                    text = position+1 +"th";
                 }
                 Toast.makeText(v.getContext(), text + " Post Clicked", Toast.LENGTH_SHORT).show();
             }
