@@ -1,10 +1,11 @@
-package com.t3g.simpleblog;
+package com.t3g.blogz;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +34,24 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.postTitle.setText(allPosts.get(position).getTitle());
         Picasso.get().load(allPosts.get(position).getFeature_image()).into(holder.postImage);
+
+//        item OnclickListener
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = null;
+                if(position==0){
+                    text = position +"st";
+                }else if (position==1){
+                    text = position +"nd";
+                }else if (position==2){
+                    text = position +"rd";
+                }else if (position>=3){
+                    text = position +"th";
+                }
+                Toast.makeText(v.getContext(), text + " Post Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

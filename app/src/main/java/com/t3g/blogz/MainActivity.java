@@ -1,4 +1,4 @@
-package com.t3g.simpleblog;
+package com.t3g.blogz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.GridLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,16 +34,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         posts = new ArrayList<>();
-
         post_list = findViewById(R.id.recyclerView);
         extractPosts(getResources().getString(R.string.url));
         GridLayoutManager manager = new GridLayoutManager(this,2);
         post_list.setLayoutManager(manager);
         adapter = new PostsAdapter(posts);
         post_list.setAdapter(adapter);
-
-
-
     }
 
     public void extractPosts(String URL){
@@ -77,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
                         posts.add(p);
                         adapter.notifyDataSetChanged();
 
-
-
                     } catch (JSONException e){
                         e.printStackTrace();
                     }
@@ -90,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
         queue.add(request);
-
     }
 }

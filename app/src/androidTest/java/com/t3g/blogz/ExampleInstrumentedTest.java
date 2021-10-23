@@ -1,4 +1,4 @@
-package com.t3g.simpleblog;
+package com.t3g.blogz;
 
 import android.content.Context;
 
