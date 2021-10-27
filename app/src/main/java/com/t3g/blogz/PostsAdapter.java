@@ -1,5 +1,7 @@
 package com.t3g.blogz;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +33,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.postTitle.setText(allPosts.get(position).getTitle());
         Picasso.get().load(allPosts.get(position).getFeature_image()).into(holder.postImage);
 
@@ -41,15 +43,20 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             public void onClick(View v) {
                 String text = null;
                 if(position==0){
-                    text = position +"st";
+                    text = position+1 +"st";
                 }else if (position==1){
-                    text = position +"nd";
+                    text = position+1 +"nd";
                 }else if (position==2){
-                    text = position +"rd";
+                    text = position+1 +"rd";
                 }else if (position>=3){
-                    text = position +"th";
+                    text = position+1 +"th";
                 }
                 Toast.makeText(v.getContext(), text + " Post Clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(),PostActivity.class);
+                intent.putExtra("title",allPosts.get(position).getTitle());
+                intent.putExtra("content",allPosts.get(position).getContent());
+//                intent.putExtra("content",allPosts.get(position).getFeature_image());
+                v.getContext().startActivity(intent);
             }
         });
 
